@@ -12,7 +12,10 @@
 </template>
 
 <script>
+
+import Store from './store'
 import Hello from './components/Hello'
+console.log(Store)
 
 export default {
 
@@ -24,16 +27,7 @@ export default {
     return {
       title:"this is a todo list",
       //数据
-      items:[
-        {
-          label:'coding',
-          isFinished: false
-        },
-        {
-          label:'walking',
-          isFinished: true
-        }
-      ],
+      items:Store.fetch(),
       newItem: ''
     }
   },
@@ -52,6 +46,16 @@ export default {
         isFinished:false
       })
       this.newItem = ''
+    }
+  },
+  //监测items的变化
+  watch:{
+    items:{
+      handler: function (items) {
+        //保存items
+        Store.save(items)
+      },
+      deep: true
     }
   }
 }
