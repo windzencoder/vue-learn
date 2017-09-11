@@ -8,6 +8,10 @@
         {{item.label}}
       </li>
     </ul>
+
+    <!-- 将驼峰法(camelCase)转换到短横线法(kebab-case) -->
+    <componment-a msgfromfather='msg from father'></componment-a>
+
   </div>
 </template>
 
@@ -15,13 +19,16 @@
 
 import Store from './store'
 import Hello from './components/Hello'
+//导入子组件
+import ComponmentA from './components/componmentA'
 console.log(Store)
 
 export default {
 
   name: 'app',
   components: {
-    Hello
+    //记得要注册子组件
+    Hello,ComponmentA
   },
   data:function(){
     return {
