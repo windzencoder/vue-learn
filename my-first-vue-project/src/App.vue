@@ -10,7 +10,8 @@
     </ul>
 
     <!-- 将驼峰法(camelCase)转换到短横线法(kebab-case) -->
-    <componment-a msgfromfather='msg from father'></componment-a>
+    <componment-a msgfromfather='msg from father' v-on:child-tell-me-something='listenToMyBoy'></componment-a>
+    <p>child tell me: {{childWords}}</p>
 
   </div>
 </template>
@@ -35,7 +36,8 @@ export default {
       title:"this is a todo list",
       //数据
       items:Store.fetch(),
-      newItem: ''
+      newItem: '',
+      childWords: ''
     }
   },
   methods: {
@@ -53,6 +55,11 @@ export default {
         isFinished:false
       })
       this.newItem = ''
+    },
+    //子组件向父组件传递消息
+    listenToMyBoy:function(msg)
+    {
+      this.childWords = msg;
     }
   },
   //监测items的变化

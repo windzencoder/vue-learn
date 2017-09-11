@@ -19,6 +19,8 @@ export default {
     onClickMe:function()
     {
       console.log(this.msgfromfather)
+      //子组件触发事件,this.msg为传递的参数
+      this.$emit('child-tell-me-something', this.msg)
     }
   }
 }
